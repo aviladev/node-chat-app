@@ -12,6 +12,19 @@ socket.on('disconnect', () =>
   console.log('Disconnected from server')
 )
 
-socket.on('newMessage', (message) => {
-  console.log('newMessage', message)
+socket.on('newMessage', ({from, text}) => {
+  const li = jQuery('<li></li>')
+  li.text(`${from}: ${text}`)
+
+  jQuery('#messages').append(li)
+})
+
+jQuery('#message-form').on('submit', (ev) => {
+  ev.preventDefault()
+  socket.emit('createMessage', {
+    from: 'User',
+    text: jQuery('[name=message]').val()
+  }, () => {
+    
+  })
 })
