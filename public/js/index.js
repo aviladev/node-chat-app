@@ -4,6 +4,14 @@ socket.on('connect', () => {
   console.log('Connected to the server')
 })
 
+socket.on('welcome', (message) => {
+  console.log(message)
+})
+
+socket.on('newUser', (message) => {
+  console.log(message)
+})
+
 socket.on('disconnect', () =>
   console.log('Disconnected from server')
 )
